@@ -4,23 +4,30 @@ import { useState } from "react";
 import Form from "./companents/Form";
 
 function App() {
-  const [memberList, setMemberList] = useState([]);
+  const [memberLists, setMemberLists] = useState([]);
+  const memberAdd = (member) => setMemberLists([...memberLists, member]);
+
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
+        {/* <p>
           Edit <code>src/App.js</code> and save to reload.
-        </p>
+        </p> */}
         <a
           className="App-link"
           href="https://reactjs.org"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          <h2>Takım Üyeleri</h2>
+          <ul>
+            {memberLists.map((member) => (
+              <li>{member}</li>
+            ))}
+          </ul>
         </a>
-        <Form />
+        <Form onSubmit={memberAdd} />
       </header>
     </div>
   );

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-function Form() {
+function Form(onSubmit) {
   const [formData, setFormData] = useState({ name: "", email: "", job: "" });
 
   const changeHandler = (event) => {
@@ -14,6 +14,7 @@ function Form() {
   useEffect(() => {
     console.log("Login Data", formData);
   }, [formData]);
+
   return (
     <form onSubmit={(e) => hadleSubmit(e)}>
       <label htmlFor="user-name">Name</label>
@@ -27,6 +28,7 @@ function Form() {
       />
       <label htmlFor="user-job">Rol</label>
       <input id="user-job" type="text" name="job" onChange={changeHandler} />
+
       <button type="submit">Submit</button>
     </form>
   );
