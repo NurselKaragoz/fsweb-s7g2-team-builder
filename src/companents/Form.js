@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
-function Form(onSubmit) {
+function Form(props) {
+  // const { memberAdd } = props;
   const [formData, setFormData] = useState({ name: "", email: "", job: "" });
 
   const changeHandler = (event) => {
@@ -9,6 +10,7 @@ function Form(onSubmit) {
   };
   const hadleSubmit = (e) => {
     e.preventDefault();
+    props.memberAdd(formData);
     console.log("formm submit", formData);
   };
   useEffect(() => {
@@ -16,7 +18,7 @@ function Form(onSubmit) {
   }, [formData]);
 
   return (
-    <form onSubmit={(e) => hadleSubmit(e)}>
+    <form onSubmit={hadleSubmit}>
       <label htmlFor="user-name">Name</label>
       <input id="user-name" type="text" name="name" onChange={changeHandler} />
       <label htmlFor="user-mail">Email</label>

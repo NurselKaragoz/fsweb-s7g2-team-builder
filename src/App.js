@@ -14,20 +14,15 @@ function App() {
         {/* <p>
           Edit <code>src/App.js</code> and save to reload.
         </p> */}
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>Takım Üyeleri</h2>
-          <ul>
-            {memberLists.map((member) => (
-              <li>{member}</li>
-            ))}
-          </ul>
-        </a>
-        <Form onSubmit={memberAdd} />
+        <Form memberAdd={memberAdd} />
+        <h2>Takım Üyeleri</h2>
+        <ul className="App-liste">
+          {memberLists.map((member) => (
+            <li>
+              {member.name} {member.email} {member.job}
+            </li>
+          ))}
+        </ul>
       </header>
     </div>
   );
